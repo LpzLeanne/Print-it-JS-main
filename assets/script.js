@@ -17,15 +17,31 @@ const slides = [
 	}
 ]
 
+let number = 0;
+
+function changeSlide(direction) {
+	number = number + direction;
+	if (number > slides.length - 1) {
+		number = 0;
+	}
+	if (number < 0) {
+		number = slides.length - 1;
+	}
+	document.getElementById("slides").src = "./assets/images/slideshow/" + slides[number].image;
+}
+
+
 let left_arrow = document.getElementById("left_arrow")
 
 left_arrow.addEventListener("click", () => {
-	console.log("click gauche")
+	console.log("previous slide")
+	changeSlide(-1)
 })
 
 
 let right_arrow = document.getElementById("right_arrow")
 
 right_arrow.addEventListener("click", () => {
-	console.log("click droit")
+	console.log("next slide")
+	changeSlide(1)
 })
