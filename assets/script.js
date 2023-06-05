@@ -17,8 +17,8 @@ const slides = [
 	}
 ]
 
+/*Change slides : images and text*/
 let number = 0;
-
 function changeSlide(direction) {
 	number = number + direction;
 	if (number > slides.length - 1) {
@@ -28,11 +28,30 @@ function changeSlide(direction) {
 		number = slides.length - 1;
 	}
 	document.getElementById("slides").src = "./assets/images/slideshow/" + slides[number].image;
+	document.getElementById("information").innerHTML = slides[number].tagLine;
 }
 
 
-let left_arrow = document.getElementById("left_arrow")
+/*Slides dots*/
+let slidesNumber = slides.length;
+const dots = document.querySelector("dots");
+function createDots() {
+	for (let i = 0; i < slidesNumber; i++){
+		const dot = document.createElement("div");
+		dot.classList.add("dot");
+		dots.appendChild(dot);
+	}
+	dots.children[0].classList.add("dot_selected");
+}
 
+
+function dotSelected() {
+
+}
+
+
+/*Actions on click*/
+let left_arrow = document.getElementById("left_arrow")
 left_arrow.addEventListener("click", () => {
 	console.log("previous slide")
 	changeSlide(-1)
@@ -40,7 +59,6 @@ left_arrow.addEventListener("click", () => {
 
 
 let right_arrow = document.getElementById("right_arrow")
-
 right_arrow.addEventListener("click", () => {
 	console.log("next slide")
 	changeSlide(1)
