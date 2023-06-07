@@ -29,24 +29,29 @@ function changeSlide(direction) {
 	}
 	document.getElementById("slides").src = "./assets/images/slideshow/" + slides[number].image;
 	document.getElementById("information").innerHTML = slides[number].tagLine;
+	changeActiveDot()
 }
 
 
-/*Slides dots*/
-let slidesNumber = slides.length;
-const dots = document.querySelector("dots");
+/*Create slides dots according to slides's table*/
+const dots = document.getElementsByClassName("dots")[0]
 function createDots() {
-	for (let i = 0; i < slidesNumber; i++){
+	for (let i = 0; i < slides.length; i++){
 		const dot = document.createElement("div");
 		dot.classList.add("dot");
 		dots.appendChild(dot);
 	}
 	dots.children[0].classList.add("dot_selected");
 }
+createDots()
 
 
-function dotSelected() {
-
+/*Change active dot when we change the slide*/
+function changeActiveDot() {
+	for(let i = 0; i < dots.children.length; i++) {
+		dots.children[i].classList.remove("dot_selected")
+	}
+	dots.children[number].classList.add("dot_selected")
 }
 
 
