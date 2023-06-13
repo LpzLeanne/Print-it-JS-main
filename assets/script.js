@@ -17,6 +17,7 @@ const slides = [
 	}
 ]
 
+
 /*Change slides : images and text*/
 let number = 0;
 function changeSlide(direction) {
@@ -46,7 +47,7 @@ function createDots() {
 createDots()
 
 
-/*Change active dot when we change the slide*/
+/*Change active dot when the slide is changed*/
 function changeActiveDot() {
 	for(let i = 0; i < dots.children.length; i++) {
 		dots.children[i].classList.remove("dot_selected")
@@ -58,13 +59,11 @@ function changeActiveDot() {
 /*Actions on click*/
 let left_arrow = document.getElementById("left_arrow")
 left_arrow.addEventListener("click", () => {
-	console.log("previous slide")
 	changeSlide(-1)
 })
 
 
 let right_arrow = document.getElementById("right_arrow")
 right_arrow.addEventListener("click", () => {
-	console.log("next slide")
 	changeSlide(1)
 })
